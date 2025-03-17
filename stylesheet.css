@@ -2,6 +2,13 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow: hidden;
+
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 header{
@@ -10,4 +17,25 @@ header{
     left: 0%;
     width: 5%;    height: 100%;
     background-color: lightgrey;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+}
+
+header .user{
+    position: absolute;
+    bottom: 1%;
+}
+
+header img{
+    width: 30px;  height: 30px;
+}
+
+header button{
+    width: 40px;    height: 40px;
+    border-radius: 100%;
+
+    display: flex;
 }

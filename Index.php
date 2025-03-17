@@ -9,7 +9,13 @@
 
 <body>
     <header>
-        <img src="Bilder/" alt="">
+        <button><img src="Bilder/Icons/task.png" alt="task"></button>
+        <button><img src="Bilder/Icons/mail.png" alt="mail"></button>
+        <img src="Bilder/Icons/task.png" alt="task">
+        <img src="Bilder/Icons/mail.png" alt="mail">
+        <div class="user">
+            <img src="Bilder/Icons/user.png" alt="user">
+        </div>
     </header>
 </body>
 </html>
