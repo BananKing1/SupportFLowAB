@@ -24,13 +24,14 @@ header{
     align-content: center;
 }
 
-header .user{
+header .group{
     position: absolute;
     bottom: 1%;
 }
 
 header img{
     width: 30px;  height: 30px;
+    margin-top: 5%;
 }
 
 header button{
