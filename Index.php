@@ -9,11 +9,11 @@
 
 <body>
     <header>
-        <button><img src="Bilder/Icons/task.png" alt="task"></button>
-        <button><img src="Bilder/Icons/mail.png" alt="mail"></button>
         <img src="Bilder/Icons/task.png" alt="task">
         <img src="Bilder/Icons/mail.png" alt="mail">
+        <img src="Bilder/Icons/bar-chart.png" alt="bar-chart">
         <div class="user">
+            <img src="Bilder/Icons/notification.png" alt="notification">
             <img src="Bilder/Icons/user.png" alt="user">
         </div>
     </header>
