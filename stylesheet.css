@@ -4,11 +4,13 @@
     box-sizing: border-box;
     overflow: hidden;
 
-    text-align: center;
-    align-content: center;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
+    font-family: "Tienne", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+    background-color: #F5F5F5;
 }
 
 header{
@@ -22,16 +24,14 @@ header{
     flex-direction: column;
     text-align: center;
     align-content: center;
-}
-
-header .group{
-    position: absolute;
-    bottom: 1%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 header img{
     width: 30px;  height: 30px;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 header button{
@@ -39,4 +39,31 @@ header button{
     border-radius: 100%;
 
     display: flex;
+}
+
+.vertical_align{
+    display: flex;
+    flex-direction: row;
+}
+
+.filler{
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.rest{ 
+    background-color: grey;
+    position: absolute;
+    height: 100vh;   width: 95vw;
+    right: 0%;
+}
+
+.StatusUpdate{
+    position: relative;
+    background-color: lightgrey;
+    max-width: 50%; min-width: 20%;
+    border-radius: .4rem;
+    padding: 2%;    margin: 2%;
+    font-weight: 700;
+    font-size: 20px;
 }
