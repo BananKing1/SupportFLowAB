@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+
+<?php
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+
+    $conn=mysqli_connect($server, $user, $pass, "supportflowab");
+
+    $sql="SELECT * FROM tblmatters WHERE status='open' OR status='ongoing' ORDER BY created DESC";
+    $result = mysqli_query($conn, $sql);
+
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,18 +43,20 @@
     </header>
 
     <div class="rest">
+
+<?php
+    $sql = "SELECT * FROM tblmatters";
+    $result = mysqli_query($conn, $sql);
+    while($row=mysqli_fetch_assoc($result)){ 
+        ?>
         <div class="StatusUpdate">
-            Status uppatering
-            <div>
-                Nytt:
-            </div>
-            <div>
-                Pågående:
-            </div>
-            <div>
-                Slutförd:
-            </div>
+            <h2>Ärende: <?=$row['matters']?></h2>
+            <h2>Beskrivning: <?=$row['beskrivning']?></h2>
+            <h2>Status: <?=$row['status']?></h2>
+            <h2>Prioritet: <?=$row['priority']?></h2>
         </div>
+    <?php }
+?>
     </div>
 </body>
 </html>
