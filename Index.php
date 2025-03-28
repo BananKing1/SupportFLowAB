@@ -43,7 +43,6 @@
     </header>
 
     <div class="rest">
-
 <?php
     $sql = "SELECT * FROM tblmatters";
     $result = mysqli_query($conn, $sql);
