@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
 
     font-family: "Tienne", serif;
     font-weight: 400;
@@ -14,17 +13,10 @@ body{
     display: flex;  flex-direction: row;
 }
 
-.header{
-    position: absolute;
-    left: 0%;
-    width: 5vw;
-    background-color: lightgrey;
-}
-
 header{
     position: sticky;
 
-    left: 0%;
+    left: 0px;   top: 0px;
     width: 5vw;    height: 100vh;
     background-color: lightgrey;
 
@@ -62,35 +54,47 @@ header button{
 .rest{ 
     background-color: grey;
     position: relative;
-    height: 100vh;   width: 95vw;
+    height: auto;   width: 95vw;
     right: 0%;
 
     display: flex;
     flex-direction: column;
 
     padding: 2%;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .box{
     position: relative;
     margin-left: 2%;    gap: 2%;
-    display: flex;  flex-direction: row;
+    display: flex;  flex-wrap: wrap;
     max-width: 95vw;    height: auto;
 }
 
 .StatusUpdate{
-    position: relative;
+    display: flex;  flex-direction: column;
     background-color: lightgrey;
-    max-width: 50%; min-width: 50%;
+    max-width: 48%; min-width: 48%;
     border-radius: .4rem;
     padding: 2%;    margin-top: 2%;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 15px;
+}
+
+.StatusUpdate h2{
+    font-weight: 700;
+    font-size: 30px;
 }
 
 button{
+    position: relative;
     border-radius: .4rem;
     background-color: grey;
-    font-size:40px;    padding: 2%;
+    font-size: 20px;    padding: 2%;
+}
+
+.right{
+    margin-top: 2%; margin-right: 2%;
+    position: relative;
+    text-align: right;
 }

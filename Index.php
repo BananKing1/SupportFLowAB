@@ -24,8 +24,6 @@
 </head>
 
 <body>
-    <div class="header"></div>
-
     <header>
     <div class="vertical_align"></div>
             <img src="Bilder/Logo.webp" alt="logo">
@@ -46,31 +44,102 @@
     <div class="rest">
         Kritisk prioritering:
         <div class="box">
-            <?php
-        $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='critical' ORDER BY created DESC";
-        $result = mysqli_query($conn, $sql);
-        while($row=mysqli_fetch_assoc($result)){ 
-            ?>
-            <div class="StatusUpdate">
-                <h2>Ärende: <?=$row['matters']?></h2>
-                <h2>Av: <?=$row['rapport']?></h2>
-                <h2>Kontakt: <?=$row['contact']?></h2>
-                <h2>Skapad: <?=$row['created']?></h2>
-                <h2>Senast uppdaerad: <?=$row['updated']?></h2>
-                <h2>Beskrivning: <?=$row['beskrivning']?></h2>
-                <h2>Status: <?=$row['status']?></h2>
+        <?php
+            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='critical' ORDER BY created DESC";
+            $result = mysqli_query($conn, $sql);
+            while($row=mysqli_fetch_assoc($result)){ 
+                ?>
+                <div class="StatusUpdate">
+                    <h2>Ärende: <?=$row['matters']?></h2>
+                    <h2>Status: <?=$row['status']?></h2>
+                    Av: <?=$row['rapport']?><br>
+                    Kontakt: <?=$row['contact']?><br>
+                    Skapad: <?=$row['created']?><br>
+                    Senast uppdaerad: <?=$row['update']?><br>
+                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
 
-                <button onclick="Finish()">Slutföra</button>
-            </div>
-        <?php }
+                    <div class="right">
+                        <button onclick="Finish()">Slutföra</button>
+                    </div>
+                </div>
+            <?php }
         ?>
         </div>
 
+
         <br>Hög prioritering:
+        <div class="box">
+        <?php
+            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='high' ORDER BY created DESC";
+            $result = mysqli_query($conn, $sql);
+            while($row=mysqli_fetch_assoc($result)){ 
+                ?>
+                <div class="StatusUpdate">
+                    <h2>Ärende: <?=$row['matters']?></h2>
+                    <h2>Status: <?=$row['status']?></h2>
+                    Av: <?=$row['rapport']?><br>
+                    Kontakt: <?=$row['contact']?><br>
+                    Skapad: <?=$row['created']?><br>
+                    Senast uppdaerad: <?=$row['update']?><br>
+                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
+
+                    <div class="right">
+                        <button onclick="Finish()">Slutföra</button>
+                    </div>
+                </div>
+            <?php }
+        ?>
+        </div>
+
 
         <br>Medium prioritering:
+        <div class="box">
+        <?php
+            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='medium' ORDER BY created DESC";
+            $result = mysqli_query($conn, $sql);
+            while($row=mysqli_fetch_assoc($result)){ 
+                ?>
+                <div class="StatusUpdate">
+                    <h2>Ärende: <?=$row['matters']?></h2>
+                    <h2>Status: <?=$row['status']?></h2>
+                    Av: <?=$row['rapport']?><br>
+                    Kontakt: <?=$row['contact']?><br>
+                    Skapad: <?=$row['created']?><br>
+                    Senast uppdaerad: <?=$row['update']?><br>
+                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
+
+                    <div class="right">
+                        <button onclick="Finish()">Slutföra</button>
+                    </div>
+                </div>
+            <?php }
+        ?>
+        </div>
+
 
         <br>Låg prioritering:
+        <div class="box">
+        <?php
+            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='low' ORDER BY created DESC";
+            $result = mysqli_query($conn, $sql);
+            while($row=mysqli_fetch_assoc($result)){ 
+                ?>
+                <div class="StatusUpdate">
+                    <h2>Ärende: <?=$row['matters']?></h2>
+                    <h2>Status: <?=$row['status']?></h2>
+                    Av: <?=$row['rapport']?><br>
+                    Kontakt: <?=$row['contact']?><br>
+                    Skapad: <?=$row['created']?><br>
+                    Senast uppdaerad: <?=$row['update']?><br>
+                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
+
+                    <div class="right">
+                        <button onclick="Finish()">Slutföra</button>
+                    </div>
+                </div>
+            <?php }
+        ?>
+        </div>        
 
     </div>
 </body>
