@@ -9,6 +9,16 @@
     <div class="content">
     <!-- If someone tries to log in -->
     <?php
+     
+       echo $_POST['username']."<br>"; //Gotta make variable for the SQL
+       
+        echo md5($_POST['password'])."<br>";
+
+        echo $_POST['password']."<br>";
+
+        
+        
+
         $host="localhost";
         $user="root";
         $pass="";
@@ -27,10 +37,13 @@
                 }else{  //You made it! you are authorized!
                     $raden=mysqli_fetch_assoc($result);   //Get the row with data
                     echo "Välkommen ".strtoupper($raden['username']); //use this to print name
-                    $_SESSION['5sp']=$raden['userid'];
+                    $_SESSION['id']=$raden['id'];
+                    $xusername = $_SESSION['username']=$raden['username'];
+                    $_SESSION['name']=$raden['name'];
+                    /*$_SESSION['5sp']=$raden['userid'];
                     $_SESSION['5ddf']=$raden['userlevel'];
                     $_SESSION['name']=$raden['name'];
-                    //$skrivutvariabeln=$_SESSION['name'];
+                    //$skrivutvariabeln=$_SESSION['name'];*/
                     echo "<br><div class='showname'>".$_SESSION['name']."</div><br>";
                     if(intval($_SESSION['5ddf'])>30){
                         echo "Ohhh, admin!";
@@ -39,7 +52,7 @@
             }   
         }else{  //else Show form   ?>
         <div class="formbox">
-            <form action="login.php" method="post" id="frmLogin">
+            <form action="Login.php" method="post" id="frmLogin">
                 <input type="text" name="username" id="username" placeholder="Username">
                 <input type="password" name="password" id="password">
                 <input type="submit" name="btnLogin" id="btnLogin" value="Login">
