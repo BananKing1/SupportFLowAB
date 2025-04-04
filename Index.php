@@ -41,6 +41,8 @@
         </div>
     </header>
 
+
+
     <div class="rest">
         Kritisk prioritering:
         <div class="box">
@@ -140,7 +142,8 @@
             <?php }
         ?>
         </div>        
-
     </div>
+
+    
 </body>
 </html>

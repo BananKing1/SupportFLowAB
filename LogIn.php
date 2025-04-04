@@ -10,14 +10,12 @@
     <!-- If someone tries to log in -->
     <?php
      
-       echo $_POST['username']."<br>"; //Gotta make variable for the SQL
+        echo $_POST['username']."<br>"; //Gotta make variable for the SQL
        
         echo md5($_POST['password'])."<br>";
 
         echo $_POST['password']."<br>";
 
-        
-        
 
         $host="localhost";
         $user="root";
@@ -40,10 +38,7 @@
                     $_SESSION['id']=$raden['id'];
                     $xusername = $_SESSION['username']=$raden['username'];
                     $_SESSION['name']=$raden['name'];
-                    /*$_SESSION['5sp']=$raden['userid'];
-                    $_SESSION['5ddf']=$raden['userlevel'];
-                    $_SESSION['name']=$raden['name'];
-                    //$skrivutvariabeln=$_SESSION['name'];*/
+                    
                     echo "<br><div class='showname'>".$_SESSION['name']."</div><br>";
                     if(intval($_SESSION['5ddf'])>30){
                         echo "Ohhh, admin!";
