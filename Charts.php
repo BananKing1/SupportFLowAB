@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-
 <!DOCTYPE html>
 
 <?php
@@ -26,6 +25,22 @@
 </head>
 
 <body>
+    <header>
+        <div class="vertical_align"></div>
+            <img src="Bilder/Logo.webp" alt="logo">
+        
+            <div class="filler"></div>
+        
+            <img src="Bilder/Icons/task.png" alt="task" onclick="location.href='task.php'">
+            <img src="Bilder/Icons/home.png" alt="home" onclick="location.href='home.php'">
+            <img src="Bilder/Icons/bar-chart.png" alt="bar-chart" onclick="location.href='Charts.php'">
+
+            <div class="filler"></div>
+
+            <img src="Bilder/Icons/notification.png" alt="notification">
+            <img src="Bilder/Icons/user.png" alt="user" onclick="location.href='Profile.php'">
+        </div>
+    </header>
 
     <div>
     <canvas id="myChart"></canvas>

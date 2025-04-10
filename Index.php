@@ -31,7 +31,7 @@
         
             <div class="filler"></div>
         
-            <img src="Bilder/Icons/mail.png" alt="mail" onclick="location.href='Mail.php'">
+            <img src="Bilder/Icons/task.png" alt="task" onclick="location.href='task.php'">
             <img src="Bilder/Icons/home.png" alt="home" onclick="location.href='home.php'">
             <img src="Bilder/Icons/bar-chart.png" alt="bar-chart" onclick="location.href='Charts.php'">
 
@@ -44,7 +44,7 @@
 
 
 
-    <div class="rest">
+    <div class="other">
         <div class="content">
         <!-- If someone tries to log in -->
         <?php
@@ -62,17 +62,21 @@
                     <?php
                     $_SESSION['id']="";
                     $_SESSION['role']="";
-                    $_SESSION['name']="";                   
+                    $_SESSION['name']="";  
+                    $_SESSION['username'];                 
                     }else{  //You made it! you are authorized!
                         $raden=mysqli_fetch_assoc($result);   //Get the row with data
                         echo "Välkommen, ".($raden['username']); //use this to print name
                         $_SESSION['id']=$raden['id'];
                         $_SESSION['role']=$raden['role'];
                         $_SESSION['name']=$raden['name'];
+                        $_SESSION['username']=$raden['username'];
                         //$skrivutvariabeln=$_SESSION['name'];
                         echo "<br>(".$_SESSION['name'].")</div><br>";
                         if(intval($_SESSION['role'])==100){
                             echo "Hej, admin!";
+                            ?><br><br> <button onclick="location.href='home.php'">Gå till hem</button><?php
+                        }else{
                             ?><br><br> <button onclick="location.href='home.php'">Gå till hem</button><?php
                         }
                     }

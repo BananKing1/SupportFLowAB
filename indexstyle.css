@@ -112,7 +112,7 @@ header button{
 }
 
 .formbox{
-    width: 50%;    padding: 5%; 
+    width: 100%;    padding: 5%; 
     margin-left: auto;  margin-right: auto;
     display: flex;  flex-direction: column;
 
@@ -150,8 +150,52 @@ input[type=submit]{
 }
 
 .formbox button{
+    width: 40%;
     position: relative;
     border-radius: .4rem;
     background-color: #007AFF;      color: #E3F2FD;
-    font-size: 20px;    padding: 2%;
+    font-size: 30px;    padding: 1%;
+}
+
+.other{ 
+    background-color: #F5F5F5;
+    position: relative;
+    height: auto;   width: 95vw;
+    right: 0%;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 2%;
+    font-size: 30px;
+}
+
+.cube{
+    display: flex;  flex-direction: column;
+    align-items: center;
+    background-color: #E3F2FD;
+    width: 48%; 
+    border-radius: .4rem;
+    padding: 2%;    
+    font-weight: 700;    font-size: 15px;
+    color: #222222 ;
+}
+
+
+.cube img{
+    width: 50%; height: auto;
+    margin: 2%;
+}
+
+.cube input[type=submit]{
+    width: auto;   min-width: 200px;
+    padding: 5%;
+    margin-top: 2%;
+    margin-left: auto;  margin-right: auto;
+    background-color: #007AFF;
+    color: #E3F2FD;
 }
