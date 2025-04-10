@@ -13,6 +13,14 @@ body{
     display: flex;  flex-direction: row;
 }
 
+button{
+    max-width: 20%;
+    position: relative;
+    border-radius: .4rem;
+    background-color: #007AFF;
+    font-size: 30px;    padding: 2%;
+}
+
 header{
     position: sticky;
 
@@ -90,7 +98,7 @@ header button{
     font-size: 30px;
 }
 
-button{
+.StatusUpdate button{
     position: relative;
     border-radius: .4rem;
     background-color: #28A745;
@@ -104,12 +112,18 @@ button{
 }
 
 .formbox{
-    width: 50%;    padding: 2%;
+    width: 50%;    padding: 5%; 
     margin-left: auto;  margin-right: auto;
+    display: flex;  flex-direction: column;
+
     text-align: center;
     justify-content: center;
+    align-items: center;
+    
+
     background-color: #E3F2FD;
     gap: 2%;    border-radius: .4rem;
+    font-size: 40px;
 }
 
 input[type=text]{

@@ -1,12 +1,8 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 
 <?php
-    $xid = $_SESSION['id'];
-    $xrole = $_SESSION['role'];
-    $xname = $_SESSION['name'];
-    $xusername = $_SESSION['username']
-
     $host = "localhost";
     $user = "root";
     $pass = "";
@@ -47,18 +43,12 @@
         </div>
     </header>
 
+
+
     <div class="rest">
-    <?php 
-        if(intval($xrole) >= 100){ ?>
-            <div class="box">
-                <img src="Bilder/Icons/user.png" alt="user">
-            </div>
-        <?php 
-        }
-        echo "Din username:". $xusername;
-        echo "Ditt namn:".$xname;
-        echo "Din position";
-    ?>
+    
     </div>
+
+    
 </body>
 </html>

@@ -26,74 +26,35 @@
 </head>
 
 <body>
-    <header>
-        <div class="vertical_align"></div>
-            <img src="Bilder/Logo.webp" alt="logo">
-        
-            <div class="filler"></div>
-        
-            <img src="Bilder/Icons/mail.png" alt="mail" onclick="location.href='Mail.php'">
-            <img src="Bilder/Icons/home.png" alt="home" onclick="location.href='Index.php'">
-            <img src="Bilder/Icons/bar-chart.png" alt="bar-chart" onclick="location.href='Charts.php'">
 
-            <div class="filler"></div>
-
-            <img src="Bilder/Icons/notification.png" alt="notification">
-            <img src="Bilder/Icons/user.png" alt="user" onclick="location.href='Profile.php'">
-        </div>
-    </header>
-
-
-
-    <div class="rest">
-    <div class="content">
-    <!-- If someone tries to log in -->
-    <?php
-        if(isset($_POST['btnLogin'])){
-            $username=$_POST['username']; //Gotta make variable for the SQL
-            $password=md5($_POST['password']);
-            $strQuery="SELECT * FROM tbluser WHERE username='$username' AND password='$password';";  
-            if($result=mysqli_query($conn,$strQuery)){ //Was it possible to question the database for this?
-                if(!mysqli_num_rows($result)==1){   //It was, now check if it didn't was just one row
-                   ?>
-                    <div class="formbox">
-                        Inte inloggad!<br>
-                        <button onclick="location.href='Index.php'">Försök igen</button>
-                    </div>
-                   <?php
-                   $_SESSION['id']="";
-                   $_SESSION['role']="";
-                   $_SESSION['name']="";                   
-                }else{  //You made it! you are authorized!
-                    $raden=mysqli_fetch_assoc($result);   //Get the row with data
-                    echo "Välkommen ".($raden['username']); //use this to print name
-                    ?>
-
-                    
-
-                    <?php
-                    $_SESSION['id']=$raden['id'];
-                    $_SESSION['role']=$raden['role'];
-                    $_SESSION['name']=$raden['name'];
-                    //$skrivutvariabeln=$_SESSION['name'];
-                    echo "<br><div class='showname'>".$_SESSION['name']."</div><br>";
-                    if(intval($_SESSION['5ddf'])==100){
-                        echo "Ohhh, admin!";
-                    }
-                }
-            }   
-        }else{  //else Show form   ?>
-        <div class="formbox">
-            <form action="Index.php" method="post" id="frmLogin">
-                <input type="text" name="username" id="username" placeholder="Username">
-                <input type="password" name="password" id="password" placeholder="password"><br>
-                <input type="submit" name="btnLogin" id="btnLogin" value="Login">
-            </form>
-        </div>
-        <?php }   //Who dis? New phone ?>
-    </div>   
+    <div>
+    <canvas id="myChart"></canvas>
     </div>
 
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+    </script>
+
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-
 <!DOCTYPE html>
 
 <?php
@@ -33,7 +32,7 @@
             <div class="filler"></div>
         
             <img src="Bilder/Icons/mail.png" alt="mail" onclick="location.href='Mail.php'">
-            <img src="Bilder/Icons/home.png" alt="home" onclick="location.href='Index.php'">
+            <img src="Bilder/Icons/home.png" alt="home" onclick="location.href='home.php'">
             <img src="Bilder/Icons/bar-chart.png" alt="bar-chart" onclick="location.href='Charts.php'">
 
             <div class="filler"></div>
@@ -46,152 +45,48 @@
 
 
     <div class="rest">
-    <div class="content">
-    <!-- If someone tries to log in -->
-    <?php
-        if(isset($_POST['btnLogin'])){
-            $username=$_POST['username']; //Gotta make variable for the SQL
-            $password=md5($_POST['password']);
-            $strQuery="SELECT * FROM tbluser WHERE username='$username' AND password='$password';";  
-            if($result=mysqli_query($conn,$strQuery)){ //Was it possible to question the database for this?
-                if(!mysqli_num_rows($result)==1){   //It was, now check if it didn't was just one row
-                   ?>
-                    <div class="formbox">
-                        Inte inloggad!<br>
-                        <button onclick="location.href='Index.php'">Försök igen</button>
-                    </div>
-                   <?php
-                   $_SESSION['id']="";
-                   $_SESSION['role']="";
-                   $_SESSION['name']="";                   
-                }else{  //You made it! you are authorized!
-                    $raden=mysqli_fetch_assoc($result);   //Get the row with data
-                    echo "Välkommen ".($raden['username']); //use this to print name
-                    
-                    
-                    
+        <div class="content">
+        <!-- If someone tries to log in -->
+        <?php
+            if(isset($_POST['btnLogin'])){
+                $username=$_POST['username']; //Gotta make variable for the SQL
+                $password=$_POST['password'];
+                $strQuery="SELECT * FROM tbluser WHERE username='$username' AND password='$password';";  
+                if($result=mysqli_query($conn,$strQuery)){ //Was it possible to question the database for this?
+                    if(!mysqli_num_rows($result)==1){   //It was, now check if it didn't was just one row
                     ?>
-                        <br><br>Kritisk prioritering:
-                        <div class="box">
-                        <?php
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='critical' ORDER BY created DESC";
-                            $result = mysqli_query($conn, $sql);
-                            while($row=mysqli_fetch_assoc($result)){ 
-                                ?>
-                                <div class="StatusUpdate">
-                                    <h2>Ärende: <?=$row['matters']?></h2>
-                                    <h2>Status: <?=$row['status']?></h2>
-                                    Av: <?=$row['rapport']?><br>
-                                    Kontakt: <?=$row['contact']?><br>
-                                    Skapad: <?=$row['created']?><br>
-                                    Senast uppdaerad: <?=$row['update']?><br>
-                                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
-
-                                    <div class="right">
-                                        <button onclick="Finish()">Påbörja</button>
-                                    </div>
-                                </div>
-                            <?php }
-                        ?>
+                        <div class="formbox">
+                            Inte inloggad!<br>
+                            <button onclick="location.href='index.php'">Försök igen</button>
                         </div>
-
-
-                        <br>Hög prioritering:
-                        <div class="box">
-                        <?php
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='high' ORDER BY created DESC";
-                            $result = mysqli_query($conn, $sql);
-                            while($row=mysqli_fetch_assoc($result)){ 
-                                ?>
-                                <div class="StatusUpdate">
-                                    <h2>Ärende: <?=$row['matters']?></h2>
-                                    <h2>Status: <?=$row['status']?></h2>
-                                    Av: <?=$row['rapport']?><br>
-                                    Kontakt: <?=$row['contact']?><br>
-                                    Skapad: <?=$row['created']?><br>
-                                    Senast uppdaerad: <?=$row['update']?><br>
-                                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
-
-                                    <div class="right">
-                                        <button onclick="Finish()">Slutföra</button>
-                                    </div>
-                                </div>
-                            <?php }
-                        ?>
-                        </div>
-
-
-                        <br>Medium prioritering:
-                        <div class="box">
-                        <?php
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='medium' ORDER BY created DESC";
-                            $result = mysqli_query($conn, $sql);
-                            while($row=mysqli_fetch_assoc($result)){ 
-                                ?>
-                                <div class="StatusUpdate">
-                                    <h2>Ärende: <?=$row['matters']?></h2>
-                                    <h2>Status: <?=$row['status']?></h2>
-                                    Av: <?=$row['rapport']?><br>
-                                    Kontakt: <?=$row['contact']?><br>
-                                    Skapad: <?=$row['created']?><br>
-                                    Senast uppdaerad: <?=$row['update']?><br>
-                                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
-
-                                    <div class="right">
-                                        <button onclick="Finish()">Slutföra</button>
-                                    </div>
-                                </div>
-                            <?php }
-                        ?>
-                        </div>
-
-
-                        <br>Låg prioritering:
-                        <div class="box">
-                        <?php
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='low' ORDER BY created DESC";
-                            $result = mysqli_query($conn, $sql);
-                            while($row=mysqli_fetch_assoc($result)){ 
-                                ?>
-                                <div class="StatusUpdate">
-                                    <h2>Ärende: <?=$row['matters']?></h2>
-                                    <h2>Status: <?=$row['status']?></h2>
-                                    Av: <?=$row['rapport']?><br>
-                                    Kontakt: <?=$row['contact']?><br>
-                                    Skapad: <?=$row['created']?><br>
-                                    Senast uppdaerad: <?=$row['update']?><br>
-                                    <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
-
-                                    <div class="right">
-                                        <button onclick="Finish()">Slutföra</button>
-                                    </div>
-                                </div>
-                            <?php }
-                        ?>
-                        </div>   
-                    
-                    
                     <?php
-                    $_SESSION['id']=$raden['id'];
-                    $_SESSION['role']=$raden['role'];
-                    $_SESSION['name']=$raden['name'];
-                    //$skrivutvariabeln=$_SESSION['name'];
-                    echo "<br><div class='showname'>".$_SESSION['name']."</div><br>";
-                    if(intval($_SESSION['5ddf'])==100){
-                        echo "Ohhh, admin!";
+                    $_SESSION['id']="";
+                    $_SESSION['role']="";
+                    $_SESSION['name']="";                   
+                    }else{  //You made it! you are authorized!
+                        $raden=mysqli_fetch_assoc($result);   //Get the row with data
+                        echo "Välkommen, ".($raden['username']); //use this to print name
+                        $_SESSION['id']=$raden['id'];
+                        $_SESSION['role']=$raden['role'];
+                        $_SESSION['name']=$raden['name'];
+                        //$skrivutvariabeln=$_SESSION['name'];
+                        echo "<br>(".$_SESSION['name'].")</div><br>";
+                        if(intval($_SESSION['role'])==100){
+                            echo "Hej, admin!";
+                            ?><br><br> <button onclick="location.href='home.php'">Gå till hem</button><?php
+                        }
                     }
-                }
-            }   
-        }else{  //else Show form   ?>
-        <div class="formbox">
-            <form action="Index.php" method="post" id="frmLogin">
-                <input type="text" name="username" id="username" placeholder="Username">
-                <input type="password" name="password" id="password" placeholder="password"><br>
-                <input type="submit" name="btnLogin" id="btnLogin" value="Login">
-            </form>
-        </div>
-        <?php }   //Who dis? New phone ?>
-    </div>   
+                }   
+            }else{  //else Show form   ?>
+            <div class="formbox">
+                <form action="index.php" method="post" id="frmLogin">
+                    <input type="text" name="username" id="username" placeholder="Username">
+                    <input type="password" name="password" id="password" placeholder="password"><br>
+                    <input type="submit" name="btnLogin" id="btnLogin" value="Login">
+                </form>
+            </div>
+            <?php }   //Who dis? New phone ?>
+        </div>   
     </div>
 
     
