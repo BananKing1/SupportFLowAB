@@ -18,7 +18,7 @@ header{
 
     left: 0px;   top: 0px;
     width: 5vw;    height: 100vh;
-    background-color: lightgrey;
+    background-color: #E3F2FD;
 
     display: flex;
     flex-direction: column;
@@ -32,6 +32,7 @@ header{
 header img{
     width: 30px;  height: 30px;
     margin-top: 10%;
+    border-radius: .4rem;
 }
 
 header button{
@@ -52,13 +53,15 @@ header button{
 }
 
 .rest{ 
-    background-color: grey;
+    background-color: #F5F5F5;
     position: relative;
     height: auto;   width: 95vw;
     right: 0%;
+    color: black;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
 
     padding: 2%;
     font-size: 30px;
@@ -69,16 +72,17 @@ header button{
     margin-left: 2%;    gap: 2%;
     display: flex;  flex-wrap: wrap;
     max-width: 95vw;    height: auto;
+    color: black;
 }
 
 .StatusUpdate{
     display: flex;  flex-direction: column;
-    background-color: lightgrey;
+    background-color: #E3F2FD;
     max-width: 48%; min-width: 48%;
     border-radius: .4rem;
     padding: 2%;    margin-top: 2%;
-    font-weight: 700;
-    font-size: 15px;
+    font-weight: 700;    font-size: 15px;
+    color: #222222 ;
 }
 
 .StatusUpdate h2{
@@ -89,7 +93,7 @@ header button{
 button{
     position: relative;
     border-radius: .4rem;
-    background-color: grey;
+    background-color: #28A745;
     font-size: 20px;    padding: 2%;
 }
 
@@ -97,4 +101,43 @@ button{
     margin-top: 2%; margin-right: 2%;
     position: relative;
     text-align: right;
+}
+
+.formbox{
+    width: 50%;    padding: 2%;
+    margin-left: auto;  margin-right: auto;
+    text-align: center;
+    justify-content: center;
+    background-color: #E3F2FD;
+    gap: 2%;    border-radius: .4rem;
+}
+
+input[type=text]{
+    width: 40%;
+    font-size: 20px;
+    padding: 2%;
+    border-radius: .4rem;
+}
+
+input[type=password]{
+    width: 40%;
+    font-size: 20px;
+    padding: 2%;
+    border-radius: .4rem;
+    margin: 2%;
+}
+
+input[type=submit]{
+    width: 80%;    padding: 2%;
+    background-color: #007AFF;
+    border-radius: .4rem;
+    font-size: 20px; 
+    color: #E3F2FD;
+}
+
+.formbox button{
+    position: relative;
+    border-radius: .4rem;
+    background-color: #007AFF;      color: #E3F2FD;
+    font-size: 20px;    padding: 2%;
 }
