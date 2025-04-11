@@ -10,7 +10,7 @@ $sql = "SELECT DATE(`update`) as date, COUNT(*) as completed
 FROM tblmatters 
 WHERE status='complete' 
 GROUP BY DATE(`update`) 
-ORDER BY `update` DESC";
+ORDER BY `update` ASC";
 
 $result = mysqli_query($conn, $sql);
 

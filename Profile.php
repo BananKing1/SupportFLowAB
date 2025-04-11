@@ -66,10 +66,10 @@
                         echo "<h2><br> Din position: ".$rolename."</h2>";
 
                         ?>
-                            <br><br><h2>Skapa användare</h2>
                             <form action="Profile.php" method="post" id="frmLogin">
                                 <?php
                                 if($xrole==100){ ?>
+                                    <br><br><h2>Skapa användare</h2>
                                     <input type="text" name="username" placeholder="Användarnamn">
                                     <input type="text" name="password" placeholder="Lösenord">
                                     <input type="text" name="name" placeholder="Namn">

@@ -111,6 +111,12 @@ header button{
     text-align: right;
 }
 
+.right input[type=submit]{
+    width: 40%;
+    border-radius: .4rem;
+    background-color: #28A745;
+}
+
 .formbox{
     width: 100%;    padding: 5%; 
     margin-left: auto;  margin-right: auto;

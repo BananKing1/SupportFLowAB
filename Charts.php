@@ -31,7 +31,8 @@
     </header>
 
     <div class="rest">
-        Klarhaterade ärenden:
+        Översikt på klarhanterade ärenden: <br>
+        ____________________________________________________________
         <div class="chart">
             <canvas id="myChart"></canvas>
         </div>
@@ -52,7 +53,7 @@ function createChart(chartData, type){
         data: {
             labels: chartData.map(row=>row.date),
             datasets: [{
-                label: '# Task completed',
+                label: '# Ärenden avklarade',
                 data: chartData.map(row=>row.completed),
                 borderWidth: 1
             }]

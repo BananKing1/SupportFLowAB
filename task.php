@@ -62,7 +62,9 @@
                 $result = mysqli_query($conn, $sql);
 
                 if(intval($xrole) >= 10){ ?>
-                Personliga ärenden <br><br> Kritisk prioritering:
+                Personliga ärenden <br>
+                ____________________________________________________________
+                <br><br> Kritisk prioritering:
                     <div class="box">
                         <?php
                             $sql = "SELECT * FROM tblmatters WHERE status='ongoing' AND shared=$xid AND priority='critical' ORDER BY created DESC";
@@ -84,7 +86,8 @@
                         <?php }
                         ?>
                     </div> 
-            
+                    
+                    ____________________________________________________________
                     <br> Hög prioritering:
                     <div class="box">
                         <?php
@@ -107,7 +110,8 @@
                         <?php }
                         ?>
                     </div> 
-
+                
+                    ____________________________________________________________
                     <br> Medium prioritering:
                     <div class="box">
                         <?php
@@ -130,7 +134,8 @@
                         <?php }
                         ?>
                     </div> 
-                    
+
+                    ____________________________________________________________
                     <br> Låg prioritering:
                     <div class="box">
                         <?php

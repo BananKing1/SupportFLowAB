@@ -47,8 +47,9 @@
                 $sql="SELECT * FROM tblmatters WHERE status='open' OR status='ongoing' ORDER BY created DESC";
                 $result = mysqli_query($conn, $sql);
 
-
                 if(intval($xrole) == 100){ ?>
+                    Skapa ärenden: <br>
+                    ____________________________________________________________
                     <form action="home.php" method="POST">
                         <input type="text" name="matters" placeholder="Ärenden">
                         <input type="text" name="beskrivning" placeholder="Beskrivning">
@@ -70,6 +71,7 @@
                         <input type="text" name="comment" placeholder="Kommentar">
                         <input type="submit" name="btnCreate" value="Skapa ärenden">
                     </form>
+                    ____________________________________________________________
                     <?php 
                     if(isset($_POST['btnCreate'])){
                         $matters = $_POST['matters'];
@@ -85,13 +87,17 @@
                         $result = mysqli_query($conn, $sql);
                     }                    
                 }   
-
+                
+                if(isset($POST['btnStart'])){
+                    $sql = "UPDATE tblmatters SET status='ongoing', shared=$xid ,update=getdate() WHERE 1";
+                    $result = mysqli_query($conn, $sql);
+                }
 
                 if(intval($xrole) >= 10){ ?>
                     <br>Kritisk prioritering:
                     <div class="box">
                         <?php
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='critical' ORDER BY created DESC";
+                            $sql = "SELECT * FROM tblmatters WHERE status='open' AND priority='critical' ORDER BY created DESC";
                             $result = mysqli_query($conn, $sql);
                             while($row=mysqli_fetch_assoc($result)){ 
                         ?>                    
@@ -104,13 +110,15 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Påbörja</button>
+                                    <form action="home.php" method="POST">
+                                        <input type="submit" name="btnStart" value="Påbörja">
+                                    </form>
                                 </div>
                             </div>       
                         <?php }
                         ?>
                     </div> 
-                
+                    ____________________________________________________________
                     <br>Hög prioritering:                    
                     <div class="box">
                         <?php                                
@@ -133,7 +141,7 @@
                         <?php }
                         ?>
                     </div> 
-                            
+                    ____________________________________________________________  
                     <br>Medium prioritering:
                     <div class="box">
                         <?php                               
@@ -156,8 +164,7 @@
                         <?php }
                         ?>                                
                     </div> 
-
-                            
+                    ____________________________________________________________ 
                     <br>Låg prioritering:
                     <div class="box">
                         <?php
@@ -201,4 +208,9 @@
         }
 ?>
 
+<?php 
+
+?>
     </div>
+</body>
+    </html>
