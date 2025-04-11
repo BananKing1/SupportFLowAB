@@ -25,7 +25,6 @@
 
             <div class="filler"></div>
 
-            <img src="Bilder/Icons/notification.png" alt="notification">
             <img src="Bilder/Icons/user.png" alt="user" onclick="location.href='Profile.php'">
         </div>
     </header>
@@ -67,16 +66,41 @@
                         echo "<h2><br> Din position: ".$rolename."</h2>";
 
                         ?>
+                            <br><br><h2>Skapa användare</h2>
+                            <form action="Profile.php" method="post" id="frmLogin">
+                                <?php
+                                if($xrole==100){ ?>
+                                    <input type="text" name="username" placeholder="Användarnamn">
+                                    <input type="text" name="password" placeholder="Lösenord">
+                                    <input type="text" name="name" placeholder="Namn">
+                                    <select name="role">
+                                        <option value="100">Admin</option>
+                                        <option value="10">Underarbetare</option>
+                                    </select>
+                                    <input type="submit" name="btnCreateUser" id="btnLogout" value="Skapa användare">
+                            </form>
+                                <?php
+                                }
+                                ?>
                             <br>
                             <form action="Profile.php" method="post" id="frmLogin">
                                 <input type="submit" name="btnLogout" id="btnLogout" value="Logga Ut">
-                                <input type="submit" name="btnCreateUser" id="btnLogout" value="Skapa användare">
                             </form>
                         <?php
+                        if(isset($_POST['btnCreateUser'])){
+                            $username = $_POST['username'];
+                            $password = $_POST['password'];
+                            $name = $_POST['name'];
+                            $role = $_POST['role'];
+    
+                            $sql = "INSERT INTO tbluser(username, name, role, password) VALUES ('$username','$password','$name','$role')";
+                            $result = mysqli_query($conn, $sql);
+                        }
+
                         if(isset($_POST['btnLogout'])){
                             session_start();
                             $_SESSION['id']="";
-                            $_SESSION['level']="";
+                            $_SESSION['role']="";
                             $_SESSION['name']="";   
                         session_destroy();
                         header("Location:index.php"); 

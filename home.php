@@ -50,15 +50,42 @@
 
 
                 if(intval($xrole) == 100){ ?>
-                    <form action="Home2.php" method="POST">
+                    <form action="home.php" method="POST">
                         <input type="text" name="matters" placeholder="Ärenden">
+                        <input type="text" name="beskrivning" placeholder="Beskrivning">
+                        <select name="status">
+                            <option value="open">Öppen</option>
+                            <option value="ongoing">Påbörjad</option>
+                            <option value="pending">Pausad</option>
+                            <option value="complete">Avslutad</option>
+                        </select>
+                        <select name="priority">
+                            <option value="critical">Kritisk</option>
+                            <option value="high">Hög</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Låg</option>
+                        </select>
+                        <input type="text" name="rapport" placeholder="Rapport">
+                        <input type="text" name="shared" placeholder="Dela">
+                        <input type="email" name="contact" placeholder="Kontakt">
+                        <input type="text" name="comment" placeholder="Kommentar">
                         <input type="submit" name="btnCreate" value="Skapa ärenden">
                     </form>
                     <?php 
                     if(isset($_POST['btnCreate'])){
-                                
+                        $matters = $_POST['matters'];
+                        $beskrivning = $_POST['beskrivning'];
+                        $status = $_POST['status'];
+                        $priority = $_POST['priority'];
+                        $rapport = $_POST['rapport'];
+                        $shared = $_POST['shared'];
+                        $contact = $_POST['contact'];
+                        $comment = $_POST['comment'];
+
+                        $sql = "INSERT INTO tblmatters(matters, beskrivning, status, priority, rapport, shared, contact, comment) VALUES ('$matters', '$beskrivning', '$status', '$priority', '$rapport', '$shared', '$contact', '$comment')";
+                        $result = mysqli_query($conn, $sql);
                     }                    
-                }
+                }   
 
 
                 if(intval($xrole) >= 10){ ?>

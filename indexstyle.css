@@ -122,12 +122,22 @@ header button{
     
 
     background-color: #E3F2FD;
-    gap: 2%;    border-radius: .4rem;
+    column-gap: 2%; row-gap: 2%;    
+    border-radius: .4rem;
     font-size: 40px;
 }
 
 input[type=text]{
-    width: 40%;
+    margin: 2%;
+    width: 40%; 
+    font-size: 20px;
+    padding: 2%;
+    border-radius: .4rem;
+}
+
+select{
+    margin: 2%;
+    width: 40%; 
     font-size: 20px;
     padding: 2%;
     border-radius: .4rem;
@@ -141,12 +151,23 @@ input[type=password]{
     margin: 2%;
 }
 
+
+input[type=email]{
+    width: 40%;
+    font-size: 20px;
+    padding: 2%;
+    border-radius: .4rem;
+    margin: 2%;
+}
+
 input[type=submit]{
     width: 80%;    padding: 2%;
+    margin-left: auto;  margin-right: auto;
     background-color: #007AFF;
     border-radius: .4rem;
     font-size: 20px; 
     color: #E3F2FD;
+    margin: 4%;
 }
 
 .formbox button{
@@ -185,7 +206,6 @@ input[type=submit]{
     color: #222222 ;
 }
 
-
 .cube img{
     width: 50%; height: auto;
     margin: 2%;
@@ -198,4 +218,8 @@ input[type=submit]{
     margin-left: auto;  margin-right: auto;
     background-color: #007AFF;
     color: #E3F2FD;
+}
+
+.chart{
+    width:100%;
 }
