@@ -27,7 +27,6 @@
 
             <div class="filler"></div>
 
-            <img src="Bilder/Icons/notification.png" alt="notification">
             <img src="Bilder/Icons/user.png" alt="user" onclick="location.href='Profile.php'">
         </div>
     </header>
