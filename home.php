@@ -88,11 +88,19 @@
                     }                    
                 }   
                 
-                if(isset($POST['btnStart'])){
-                    $sql = "UPDATE tblmatters SET status='ongoing', shared=$xid ,update=getdate() WHERE 1";
+                if(isset($_POST['btnStart'])) {
+                    $matter_id = $_POST['matter_id'];
+                
+                    $sql = "UPDATE tblmatters SET status='ongoing', shared=$xid, `update`=NOW() WHERE id=$matter_id";
                     $result = mysqli_query($conn, $sql);
+                
+                    if($result) {
+                        echo "Status uppdaterad!";
+                    } else {
+                        echo "Fel: " . mysqli_error($conn);
+                    }
                 }
-
+                
                 if(intval($xrole) >= 10){ ?>
                     <br>Kritisk prioritering:
                     <div class="box">
@@ -111,6 +119,7 @@
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
                                     <form action="home.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
                                         <input type="submit" name="btnStart" value="Påbörja">
                                     </form>
                                 </div>
@@ -122,7 +131,7 @@
                     <br>Hög prioritering:                    
                     <div class="box">
                         <?php                                
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='high' ORDER BY created DESC";
+                            $sql = "SELECT * FROM tblmatters WHERE status='open' AND priority='high' ORDER BY created DESC";
                             $result = mysqli_query($conn, $sql);
                             while($row=mysqli_fetch_assoc($result)){ 
                         ?>                    
@@ -135,7 +144,10 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Påbörja</button>
+                                    <form action="home.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnStart" value="Påbörja">
+                                    </form>
                                 </div>
                             </div>
                         <?php }
@@ -145,7 +157,7 @@
                     <br>Medium prioritering:
                     <div class="box">
                         <?php                               
-                        $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='medium' ORDER BY created DESC";
+                        $sql = "SELECT * FROM tblmatters WHERE status='open' AND priority='medium' ORDER BY created DESC";
                             $result = mysqli_query($conn, $sql);
                             while($row=mysqli_fetch_assoc($result)){ 
                         ?>                    
@@ -158,7 +170,10 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Påbörja</button>
+                                    <form action="home.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnStart" value="Påbörja">
+                                    </form>
                                 </div>
                             </div>                                                     
                         <?php }
@@ -168,7 +183,7 @@
                     <br>Låg prioritering:
                     <div class="box">
                         <?php
-                            $sql = "SELECT * FROM tblmatters WHERE (status='open' OR status='ongoing') AND priority='low' ORDER BY created DESC";
+                            $sql = "SELECT * FROM tblmatters WHERE status='open' AND priority='low' ORDER BY created DESC";
                             $result = mysqli_query($conn, $sql);
                             while($row=mysqli_fetch_assoc($result)){ 
                         ?>                    
@@ -181,7 +196,10 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Påbörja</button>
+                                    <form action="home.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnStart" value="Påbörja">
+                                    </form>
                                 </div>                                   
                             </div>
                     <?php }

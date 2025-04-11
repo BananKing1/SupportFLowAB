@@ -61,6 +61,20 @@
                 $sql="SELECT * FROM tblmatters WHERE status='open' OR status='ongoing' ORDER BY created DESC";
                 $result = mysqli_query($conn, $sql);
 
+                if(isset($_POST['btnEnd'])) {
+                    $matter_id = $_POST['matter_id'];
+                
+                    $sql = "UPDATE tblmatters SET status='complete', shared=$xid, `update`=NOW() WHERE id=$matter_id";
+                    $result = mysqli_query($conn, $sql);
+                
+                    if($result) {
+                        echo "Status uppdaterad!";
+                    } else {
+                        echo "Fel: " . mysqli_error($conn);
+                    }
+                }                
+                
+                
                 if(intval($xrole) >= 10){ ?>
                 Personliga ärenden <br>
                 ____________________________________________________________
@@ -80,8 +94,11 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Slutför</button>
-                                </div>
+                                    <form action="task.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnEnd" value="Slutföra">
+                                    </form>
+                                </div> 
                             </div>       
                         <?php }
                         ?>
@@ -104,8 +121,11 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Slutför</button>
-                                </div>
+                                    <form action="task.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnEnd" value="Slutföra">
+                                    </form>
+                                </div> 
                             </div>       
                         <?php }
                         ?>
@@ -128,8 +148,11 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Slutför</button>
-                                </div>
+                                    <form action="task.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnEnd" value="Slutföra">
+                                    </form>
+                                </div> 
                             </div>       
                         <?php }
                         ?>
@@ -152,8 +175,11 @@
                                 Senast uppdaerad: <?=$row['update']?><br>
                                 <h2>Beskrivning:</h2> <?=$row['beskrivning']?>
                                 <div class="right">                                        
-                                    <button onclick="Finish()">Slutför</button>
-                                </div>
+                                    <form action="task.php" method="POST">
+                                        <input type="hidden" name="matter_id" value="<?=$row['id']?>">
+                                        <input type="submit" name="btnEnd" value="Slutföra">
+                                    </form>
+                                </div> 
                             </div>       
                         <?php }
                         ?>
